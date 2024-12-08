@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -14,6 +15,19 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.render("index");
 })
+
+// entregar uma porta
+const DB_USER = process.env.DB_USER
+const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
+
+mongoose.connect(
+    `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.8a8ty.mongodb.net/`
+)
+    .then(() => {
+        console.log("MongoDB Conectado");
+        app.listen(3000);
+    })
+    .catch(err => console.log(err));
 
 app.listen(8080, () => {
     console.log('Servidor rodando...')
