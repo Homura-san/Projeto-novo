@@ -12,8 +12,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// Rotas do model
+const senderRoutes = require('./routes/senderRoutes');
+
+app.use('/sender', senderRoutes)
+
 app.get('/', (req, res) => {
     res.render("index");
+})
+
+app.get('/edit', (req, res)=> {
+    res.render("edit");
 })
 
 // entregar uma porta
