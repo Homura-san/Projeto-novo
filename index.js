@@ -14,11 +14,20 @@ app.use(bodyParser.json());
 
 // Rotas do model
 const senderRoutes = require('./routes/senderRoutes');
+const Sender = require('./models/Sender');
 
 app.use('/sender', senderRoutes)
 
 app.get('/', (req, res) => {
-    res.render("index");
+    async function findAll() {
+        try{
+            const sender = await Sender.find();
+            return res.render("index", {sender:sender})
+        } catch (err){
+            console.log(err)
+        }
+    }
+    findAll();
 })
 
 app.get('/edit', (req, res)=> {
