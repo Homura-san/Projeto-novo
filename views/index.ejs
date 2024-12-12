@@ -24,11 +24,12 @@
                 <p class="card-text">
                     Endereco: <%= sender.adress %>
                 </p>
+                <a class="btn btn-success" href="sender/edit/<%= sender._id %>">Editar</a>
             </div>
             
         <%})  %>
     </ul>
 
-    <a href="/edit">Criar encomenda</a>
+    <a href="/sender/create">Criar encomenda</a>
 </body>
 </html>

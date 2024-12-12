@@ -8,9 +8,15 @@
 </head>
 <body>
     <form action="/sender" method="POST">
-        <input type="text" name="name" placeholder="Nome">
-        <input type="text" name="package" placeholder="Package">
-        <input type="text" name="adress" placeholder="Adress">
+        <% if (sender){ %>
+            <input type="text" name="name" placeholder="Nome" value="<%= sender.name %>">
+            <input type="text" name="package" placeholder="Package"value="<%= sender.package %>">
+            <input type="text" name="adress" placeholder="Adress" value="<%= sender.adress %>">
+        <%} else {%>
+            <input type="text" name="name" placeholder="Nome">
+            <input type="text" name="package" placeholder="Package">
+            <input type="text" name="adress" placeholder="Adress">
+        <%}%>
         <button type="submit">Enviar</button>
     </form>
 </body>

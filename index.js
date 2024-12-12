@@ -30,9 +30,6 @@ app.get('/', (req, res) => {
     findAll();
 })
 
-app.get('/edit', (req, res)=> {
-    res.render("edit");
-})
 
 // entregar uma porta
 const DB_USER = process.env.DB_USER
